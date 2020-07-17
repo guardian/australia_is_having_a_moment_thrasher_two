@@ -87,6 +87,8 @@ section#support-the-guardian {
         height: 0px;
         background-repeat: no-repeat;
         z-index: 99;
+        margin-top: 20px;
+        margin-left: 20px;
 
         @include mq($until: tablet) {
             width: calc(100% - 80px);
@@ -96,7 +98,25 @@ section#support-the-guardian {
         }
 
         @include mq($from: tablet) {
-            width: 650px;
+            width: 360px;
+            padding-bottom: 10%;
+            position: absolute;
+        }
+
+        @include mq($from: desktop) {
+            width: 430px;
+            padding-bottom: 10%;
+            position: absolute;
+        }
+
+        @include mq($from: leftCol) {
+            width: 560px;
+            padding-bottom: 10%;
+            position: absolute;
+        }
+
+        @include mq($from: wide) {
+            width: 600px;
             padding-bottom: 10%;
             position: absolute;
         }
@@ -411,7 +431,7 @@ section#support-the-guardian {
 :not(.hide-support-messaging) {
 
     .australian_moment__title {
-        background-image: url("https://interactive.guim.co.uk/embed/aus/2020/social/title.svg");
+        background-image: url("https://uploads.guim.co.uk/2020/07/17/new_title4.svg");
     }
 
     .australian_moment__wrapper_contribute {
@@ -427,7 +447,7 @@ section#support-the-guardian {
 .hide-support-messaging {
 
     .australian_moment__title {
-        background-image: url("https://interactive.guim.co.uk/embed/aus/2020/social/title-support.svg");
+        background-image: url("https://uploads.guim.co.uk/2020/07/17/new_title4.svg");
     }
 
     .australian_moment__wrapper_contribute {

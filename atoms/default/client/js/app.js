@@ -1,27 +1,6 @@
 import share from 'shared/js/share'
 
-function trackLoad() {
-    window.guardian.ophan.record({
-        component: 'thrasher : australian_moment : load',
-        value: 1
-    });
-}
-
-var count = 120000, total, goal, percent, radiusB
-
-var interval
-
-var min = 200
-
-var max = 380
-
-var range = max - min
-
-var origin = 125710
-
 var totalDisplay = document.getElementById('total');
-
-var total_circle = document.getElementById('total_circle');
 
 var socialista = share("Information can save lives. Help Guardian Australia reach 150,000 supporters ", "https://support.theguardian.com/contribute", "https://interactive.guim.co.uk/embed/aus/2020/social/guardian_australia.png", "https://interactive.guim.co.uk/embed/aus/2020/social/guardian_australia.png", "#supporttheguardian", "Guardian Australia supporters are doing something powerful. I support the Guardian because I believe their independent journalism is vital, and should be open and free to all. Join me. With your support, we can do more.");
 
@@ -41,54 +20,10 @@ const init = x => {
 	fetch(`https://support.theguardian.com/supporters-ticker.json?t=${new Date().getTime()}`)
 		.then(response => response.json())
 		.then((data) => {
+			const total = data.total;
 
-			total = (data.total <= data.goal) ? data.total : data.goal
-
-			goal = data.goal
-
-	        setTimeout(function() {
-	            animateCount();
-	        }, 500);		
-			
+            totalDisplay.textContent = total.toLocaleString();
 		})
-}
-
-const animateCount = x => {
-    if (interval === undefined) {
-        interval = setInterval(increaseCounter, 30);
-    }
-}
-
-const increaseCounter = x => {
-
-    count += Math.floor(total / 100);
-
-    count = (count > total) ? total : count ;
-
-	percent = pregression(origin, goal, count)
-
-	radiusB = ( range / 100 * percent ) + min
-
-	total_circle.setAttribute("r", radiusB);
-
-    totalDisplay.textContent = numberWithCommas(count)
-
-    if (count >= total) {
-        clearInterval(interval);
-    }
-
-}
-
-const numberWithCommas = x => {
-
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
-}
-
-const pregression = (min, max, current) => {
-
-	return ( current - min ) * ( 100 / ( max - min ) )
-
 }
 
 let options = {
